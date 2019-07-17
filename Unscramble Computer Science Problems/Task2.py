@@ -19,4 +19,19 @@ Print a message:
 "<telephone number> spent the longest time, <total time> seconds, on the phone during 
 September 2016.".
 """
+longest_num = None
+longest_duration = 0
+tel_num_duration = {}
 
+for record in calls:
+    for i in range(2):
+        tel_num = record[i]
+        duration = int(record[-1])
+        
+        tel_num_duration[tel_num] =  tel_num_duration.get(tel_num, 0) + duration
+        
+        if tel_num_duration[tel_num] > longest_duration:
+            longest_duration = tel_num_duration[tel_num]
+            longest_num = tel_num
+
+print("{} spent the longest time, {} seconds, on the phone during September 2016.".format(longest_num, longest_duration))
